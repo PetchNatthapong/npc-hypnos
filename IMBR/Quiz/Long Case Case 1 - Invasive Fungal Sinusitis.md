@@ -97,26 +97,26 @@
 **» NPC request investigations:**
 
 **Autoimmune / Vasculitis workup:**
-- **ANCA:** p-ANCA (MPO) และ c-ANCA (PR3)
-- **ANA:** titer และ pattern
-- **Anti-dsDNA:** 
-- **Complement:** C3, C4
+- **ANCA:** Negative (both p-ANCA/MPO และ c-ANCA/PR3) — ช่วย rule out GPA, MPA
+- **ANA:** Negative — ช่วย rule out SLE, scleroderma
+- **Anti-dsDNA:** Negative
+- **Complement:** C3 35 mg/dL (N 90-180), **C4 <5 mg/dL (N 15-45)** — **C4 ต่ำ**
 
 **Renal:**
-- **UA:** proteinuria, hematuria, cellular casts
-- **UPCR:** protein/creatinine ratio
+- **UA:** Protein 2+, RBC 10-15/HPF, WBC 3-5/HPF, **No cellular casts**
+- **UPCR:** 350 mg/g (elevated, ชี้ว่ามี proteinuria จาก DKA หรือ early nephropathy)
 
 **Infection screening:**
-- **HIV:** antibody/antigen
-- **HBsAg:** hepatitis B surface antigen
-- **Anti-HCV:** hepatitis C antibody
-- **CXR:** chest X-ray
-- **Stool exam:** occult blood, parasite
+- **HIV:** Non-reactive
+- **HBsAg:** Non-reactive
+- **Anti-HCV:** Non-reactive
+- **CXR:** Normal — no pulmonary lesion, no fungal ball
+- **Stool exam:** No occult blood, no parasite ova
 
 **Imaging:**
-- **Film both hands:** เพื่อดู erosive changes หรือ calcinosis
+- **Film both hands:** **Soft tissue swelling รอบข้อมือซ้าย**, no erosions, no calcinosis — ตรงกับ orbital cellulitis ที่ลุกลามมาจากไซนัส
 - **CT sinus (plain + contrast):** หนาตัวของไซนัสซ้ายทุกช่อง (maxillary, ethmoid, frontal, sphenoid) ร่วมกับ **bone erosion** ของ medial orbital wall และ lamina papyracea เข้า orbit และ cranial ส่วน anterior
-- **MRI brain + orbit (with contrast):** ดู extent ของ disease เข้าไปถึง cavernous sinus หรือยัง
+- **MRI brain + orbit (with contrast):** พบ mass-like lesion ที่ left ethmoid ลุกลามเข้า left orbit และ **คาบเกี่ยว cavernous sinus ซ้าย** — ยังไม่มี intracranial extension ชัดเจน
 
 **Procedures:**
 - **Nasal endoscopy + biopsy:**
