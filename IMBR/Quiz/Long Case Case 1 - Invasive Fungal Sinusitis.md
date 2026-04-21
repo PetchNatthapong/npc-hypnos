@@ -86,11 +86,39 @@
 
 **Lab / Pathology:**
 - **CBC:** WBC 18,000 /N 90%, Hb 13.5, Hct 41, Platelets 200,000
-- **BMP:** Na 131, K 5.2, Cl 98, HCO₃ 10, BUN 28, Cr 2.1, Glucose **580 mg/dL**
+- **BMP + Electrolytes:** Na 131, K 5.2, Cl 98, HCO₃ 10, BUN 28, Cr 2.1, Glucose **580 mg/dL**
 - **ABG:** pH 6.98, PaCO₂ 18, PaO₂ 85, HCO₃ 10 ( metabolic acidosis )
 - **B-hydroxybutyrate:** 6.5 mEq/L (elevated)
 - **HbA1c:** 11.2%
+- **ESR:** 85 mm/hr (elevated)
+- **CRP:** 180 mg/L (elevated)
 - **Blood cultures × 2:** pending 48 hours
+
+**» NPC request investigations:**
+
+**Autoimmune / Vasculitis workup:**
+- **ANCA:** p-ANCA (MPO) และ c-ANCA (PR3)
+- **ANA:** titer และ pattern
+- **Anti-dsDNA:** 
+- **Complement:** C3, C4
+
+**Renal:**
+- **UA:** proteinuria, hematuria, cellular casts
+- **UPCR:** protein/creatinine ratio
+
+**Infection screening:**
+- **HIV:** antibody/antigen
+- **HBsAg:** hepatitis B surface antigen
+- **Anti-HCV:** hepatitis C antibody
+- **CXR:** chest X-ray
+- **Stool exam:** occult blood, parasite
+
+**Imaging:**
+- **Film both hands:** เพื่อดู erosive changes หรือ calcinosis
+- **CT sinus (plain + contrast):** หนาตัวของไซนัสซ้ายทุกช่อง (maxillary, ethmoid, frontal, sphenoid) ร่วมกับ **bone erosion** ของ medial orbital wall และ lamina papyracea เข้า orbit และ cranial ส่วน anterior
+- **MRI brain + orbit (with contrast):** ดู extent ของ disease เข้าไปถึง cavernous sinus หรือยัง
+
+**Procedures:**
 - **Nasal endoscopy + biopsy:**
   - พบ necrotic tissue สีดำใน nasal cavity ซ้าย
   - Fungal stain: KOH → broad non-septate hyphae
