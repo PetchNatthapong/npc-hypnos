@@ -135,9 +135,39 @@
 
 **» NPC ตอบ (รอ NPC...)**
 
+**» NPC final diagnosis + treatment:**
+
+## 🏥 Final Diagnosis
+
+### **SLE with Cutaneous LE + Autoimmune Hemolytic Anemia (AIHA)**
+
+Supporting evidence:
+- Low C4 (complement consumption — classic in SLE)
+- ANA negative ไม่ได้ rule out SLE 100% (seronegative SLE มีได้ หรืออาจเป็น early disease)
+- Malar/discoid rash pattern, photosensitivity
+- AIHA: Hb ต่ำลง + elevated bilirubin จาก hemolysis
+- Young female with multi-system involvement (sinus, orbit, skin)
+- DKA อาจ be precipitated by infection หรือ SLE flare
+
 ---
 
-## 4️⃣ CLINICAL REASONING + DISCUSSION QUESTIONS
+### 💊 Specific Treatment for SLE
+
+**Non-major organ involvement (Skin, Musculoskeletal):**
+| | Dose |
+|---|---|
+| **Prednisolone** | 0.5 mg/kg/day (taper gradually) |
+| **Hydroxychloroquine (HCQ)** | 200-400 mg/day (long-term maintenance) |
+
+**Supportive/Non-specific treatment:**
+| | Indication |
+|---|---|
+| **Bactrim (TMP-SMX)** | PCP prophylaxis if on high-dose steroid |
+| **Vit D + CaCO₃** | Bone health (osteoporosis prevention) |
+| **Vaccination — Influenza, PCV20** | Infection prevention |
+| **Contraception — IUD + condom** | Pregnancy prevention (cyclophosphamide contraindicated) |
+
+---
 
 ### 📌 Discussion Question 1: Diagnosis & Differential
 
