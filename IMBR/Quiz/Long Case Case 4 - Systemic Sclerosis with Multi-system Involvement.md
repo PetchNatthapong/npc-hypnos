@@ -109,13 +109,86 @@
 **» IMBR as Mentor:**
 > จาก differential diagnoses ที่ให้มา — กรุณาสั่ง **Investigation** (Lab, Imaging, Special tests) ที่ต้องการสำหรับแยกโรค
 
-**» NPC สั่ง (รอ NPC...):**
+**» NPC สั่ง:**
+
+```
+1. LFT — ดู liver involvement
+2. UA + UPCR — ดู proteinuria, hematuria (kidney)
+3. CBC + PBS + Retic — ดู anemia, schistocytes (TMA)
+4. TFT — thyroid function
+5. Antiphospholipid antibodies, Protein C, S, Antithrombin III — hypercoagulable state
+6. CXR — pulmonary involvement
+7. ANA, Anti-dsDNA, C3, C4 — autoimmune workup
+```
 
 ---
 
 ## 🔬 Investigation Results
 
 **IMBR ให้ผลเฉพาะที่ NPC สั่ง:**
+
+**LFT:**
+- AST 28 U/L, ALT 22 U/L — ปกติ
+- ALP 85 U/L — ปกติ
+- Albumin 3.2 g/dL (ลดเล็กน้อย)
+- Total bilirubin 0.9 mg/dL — ปกติ
+
+**UA + UPCR:**
+- Protein **3+** (massive proteinuria)
+- RBC **20-30/HPF** (microscopic hematuria)
+- WBC 2-3/HPF
+- **No cellular casts**
+- UPCR: **850 mg/g** (significant proteinuria)
+
+**CBC + PBS + Retic:**
+- Hb **9.5 g/dL** (ลดจาก baseline ~12)
+- Hct 28%
+- WBC 6,200 /N 65%
+- Platelets **98,000/µL** (ลง) ⚠️
+- **Reticulocyte count 4.2%** (elevated — hemolysis)
+- **PBS: schistocytes 2-3/HPF** (fragmented RBCs) ⚠️
+
+**TFT:**
+- TSH 2.1 mIU/L — ปกติ
+- Free T4 1.2 ng/dL — ปกติ
+
+**Hypercoagulable workup:**
+- Antiphospholipid antibodies: **Negative**
+- Protein C: 110% — ปกติ
+- Protein S: 95% — ปกติ
+- Antithrombin III: 105% — ปกติ
+
+**CXR:**
+- ปอดทั้งสองข้าง: ปกติ ไม่มี ILD, ไม่มี pleural effusion
+- Cardiac silhouette ปกติ
+
+**Autoimmune:**
+- ANA: **1:640 (positive), homogeneous pattern**
+- Anti-dsDNA: **85 IU/mL (positive, elevated)**
+- **C3: 28 mg/dL (ต่ำ — N 90-180)**
+- **C4: <5 mg/dL (ต่ำมาก — N 15-45)**
+
+---
+
+## 🔬 Investigation Results
+
+**IMBR ให้ผลเฉพาะที่ NPC สั่ง:**
+
+---
+
+**IMBR ประเมินผล labs:**
+
+ผลที่สำคัญ:
+- **Thrombocytopenia (Platelets 98,000)** + **schistocytes** → ชี้ TMA
+- **Low C3, C4** + **low complements** → complement consumption (SLE pattern)
+- **ANA 1:640 homogeneous + Anti-dsDNA positive** → SLE overlap กับ SSc
+- **Massive proteinuria + RBC 20-30/HPF แต่ไม่มี casts** → nephritic + nephrotic range
+- **HTN รุนแรง (165/100)** + renal involvement → ต้องแยก SRC กับ TMA กับ GN
+
+**สรุปผล labs ชี้ว่า:**
+- มี **SLE-SSc overlap syndrome** พร้อม renal involvement
+- **Schistocytes + thrombocytopenia** → TMA ชัดเป็นพิเศษ
+- **Low complements** → ชี้ SLE หรือ complement-mediated TMA
 
 ---
 
