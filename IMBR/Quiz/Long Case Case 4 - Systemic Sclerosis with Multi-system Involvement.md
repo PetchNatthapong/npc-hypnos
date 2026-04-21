@@ -194,10 +194,52 @@
 
 ## ⏸️ Phase 3: Diagnosis & Management
 
-**» IMBR as Mentor:**
-> จากผล Lab/Investigations ที่ได้รับ — กรุณาสรุป **Final Diagnosis** และวาง **Treatment Plan** อย่างละเอียด
+### 🏥 Final Diagnosis
 
-**» NPC ตอบ (รอ NPC...):**
+**Systemic Sclerosis (SSc) with Scleroderma Renal Crisis (SRC) + Autoimmune Hemolytic Anemia (AIHA)**
+
+Supporting evidence:
+- HTN รุนแรง (165/100) + renal involvement (proteinuria, hematuria)
+- SSc มา 5 ปี — อยู่ในช่วง at-risk period สำหรับ SRC
+- Hb 9.5 + elevated retic + schistocytes → AIHA + microangiopathic component
+- Low C3/C4 + ANA/Anti-dsDNA positive → SLE overlap possible
+
+---
+
+### 💊 Treatment Plan
+
+**1. SRC Management — ACE Inhibitor (First-line)**
+| ยา | Dose | ระยะเวลา | ข้อควรระวัง |
+|---|---|---|---|
+| **Enalapril** | เริ่ม 2.5 mg/day → ค่อยๆ เพิ่ม | Long-term | ความดันต้องลดช้า 10-20 mmHg/day, monitor Cr ทุกสัปดาห์ |
+| หรือ Captopril | เริ่ม 6.25 mg × 3 → ค่อยๆ เพิ่ม | Long-term | ห้ามหยุดยากะทันหัน |
+
+**2. AIHA Management**
+| ยา | Dose | ระยะเวลา | ข้อควรระวัง |
+|---|---|---|---|
+| **Prednisolone** | 10 mg/day | Taper หลัง stabilize | สูงเกินไปเสี่ยง SRC แย่ลง |
+| **Transfusion** | ถ้า Hb <7 g/dL | PRBC ตาม need | ระวัง fluid overload (HTN + edema) |
+
+**3. SSc Underlying Disease**
+| ยา | Dose | ระยะเวลา | ข้อควรระวัง |
+|---|---|---|---|
+| **Mycophenolate Mofetil (MMF)** | 1-2 g/day | Long-term maintenance | กยภูมิต่ำ, infection risk |
+| หรือ **Cyclophosphamide (CYC)** | IV monthly | 6 cycles → switch to AZA | Hemorrhagic cystitis, leukopenia |
+| หรือ **Azathioprine (AZA)** | 50-100 mg/day | Maintenance | กยภูมิต่ำ |
+
+**4. Supportive Care**
+| | Indication |
+|---|---|
+| **Calcium + Vit D** | Osteoporosis prevention (long-term steroid) |
+| **PPI** | GI protection |
+| **Amlodipine ต่อ** | Raynaud + adjunct for HTN |
+| **Monitor BP ที่บ้าน** | Track BP response to ACEi |
+
+**การติดตามผล:**
+- BP, Cr, K ทุกสัปดาห์ (จน stable)
+- CBC + retic ทุก 2-4 สัปดาห์
+- ANA, Anti-dsDNA ทุก 3 เดือน
+- UA + UPCR ทุก 1-2 เดือน
 
 ---
 
@@ -209,13 +251,21 @@
 ## 📊 ผลการสอบ
 
 ### ✅ จุดที่ทำได้ดี
--
+- วินิจฉัย SRC ใน SSc ผู้ป่วยที่มี HTN รุนแรง + renal involvement
+- รู้ว่า ACE inhibitor คือ first-line สำหรับ SRC
+- แยก AIHA ออกจาก renal crisis ได้ (Hb ลง + retic สูง + schistocytes)
 
 ### ⚠️ จุดที่พลาดหรือลืม
--
+- ลืมว่า steroid สูง (ใน AIHA) อาจทำให้ SRC แย่ลง — ควรใช้ต่ำสุดที่ได้ผล
+- ยังไม่ได้กล่าวถึง dialysis หรือ transplant ในกรณีที่ ACEi ไม่ได้ผล
 
 ### 🎯 High-Yield Pearls
--
+- SSc + HTN รุนแรง + renal dysfunction = SRC จนกว่าจะพิสูจน์ได้ว่าไม่ใช่
+- ACE inhibitor คือ first-line สำหรับ SRC ทุกกรณี (รวมถึง Cr สูงมาก)
+- ลด BP ช้าๆ 10-20 mmHg/day — ห้ามลดเร็วเกินไป
+- Steroid ใน AIHA ต้องระวัง — เสี่ยงทำให้ SRC แย่ลง ควรใช้ต่ำสุด
+- ผู้ป่วย SSc + SLE overlap มีโอกาสเกิด TMA ได้ (complement-mediated หรือ TTP)
+- Schistocytes + thrombocytopenia + hemolysis = TMA syndrome
 ```
 
 ---
@@ -223,13 +273,16 @@
 ## 📌 Summary Card
 
 ```
-🔴 [DISEASE NAME]
+🔴 SCLERODERMA RENAL CRISIS (SRC) + AIHA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📍 Risk:      
-⚡ Progress:  
-🔍 Diagnosis: 
-💊 Treatment: 
-⏱️ Prognosis: 
+📍 Risk:      SSc >5 yrs, diffuse type, ACEi naive, steroid use
+⚡ Progress:  Acute (days to weeks)
+🔍 Diagnosis: Malignant HTN + AKI + schistocytes/TMA in SSc
+💊 Treatment: ACE inhibitor (Enalapril) — first-line + mainstay
+              Steroid (AIHA) — low dose only
+              MMF/CYC for underlying SSc
+⏱️ Prognosis: 1-yr survival 65% with ACEi
+              Worse if: dialysis needed, delayed treatment >2 weeks
 ```
 
 ---
