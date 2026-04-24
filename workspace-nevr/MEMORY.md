@@ -132,8 +132,23 @@
 | Mock exam scores | >85% |
 | Time to Phase 5 | ~12 months |
 
+## Post-Lesson Git Push Workflow
+
+When Nevr finishes a lesson/study session:
+1. Send Telegram message to Hypnos (@HypnosBot) via bot token `8123197166:AAFQafWxt8zBUQo1m9CBlBTxTFE2YueUl2A`
+2. Chat ID: `8763794609`
+3. Message format: `"✅ Nevr lesson done — [topic]. Time to push workspace-nevr/ files to git."`
+4. Use `send_message` tool or `curl` to Telegram Bot API
+
+**Telegram Bot API endpoint:**
+```
+POST https://api.telegram.org/bot8123197166:AAFQafWxt8zBUQo1m9CBlBTxTFE2YueUl2A/sendMessage
+{"chat_id": 8763794609, "text": "✅ Nevr lesson done — [topic]. Time to push workspace-nevr/ files to git."}
+```
+
 ## Last Session
 - 2026-04-24: Built full system — Dashboard, Study Plan, Templates, Anki CSV starter, Case Log, Weakness Tracker, Phase 1 kickstarter
+- 2026-04-24: Added post-lesson git push workflow — notify Hypnos via Telegram after each session
 
 ---
 
