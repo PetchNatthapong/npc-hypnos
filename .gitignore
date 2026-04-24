@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+._*
+
+# Git
+.git/
+
+# Logs
+*.log
+
+# Editor
+*.swp
+*~
+.vscode/
+
+# Agent memory / private state (excluded from repo)
+**/memory/
+**/state/
+**/.obsidian/
+**/workspace-hypnos/memory/
+**/workspace-nevr/cases/
+**/workspace-sophos/memory/
+**/workspace-pluto/memory/

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Pluto Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0c0c06;
+    --card: #18180a;
+    --card-hover: #202010;
+    --border: #2a2a0f;
+    --text: #e8e8d0;
+    --text-dim: #808050;
+    --accent: #ffd93d;
+    --accent2: #ffb800;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, #101008 0%, #1a1a0c 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 24px 20px;
+    text-align: center;
+  }
+  .avatar {
+    width: 64px; height: 64px;
+    margin: 0 auto 12px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #282000, #3a3000);
+    border: 2px solid rgba(255,217,61,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 0 24px rgba(255,217,61,0.12);
+  }
+  header h1 { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+  header p { color: var(--text-dim); font-size: 0.82rem; }
+  main { padding: 24px 20px 40px; max-width: 680px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; padding-left: 4px;
+  }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px 20px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.2s;
+  }
+  .card:hover {
+    background: var(--card-hover); transform: translateY(-2px);
+    border-color: rgba(255,217,61,0.3);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  }
+  .card .icon { font-size: 1.5rem; }
+  .card .info .title { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+  .card .info .sub { font-size: 0.78rem; color: var(--text-dim); }
+  .card .arrow { margin-left: auto; color: var(--text-dim); font-size: 1.1rem; }
+
+  .status-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin-bottom: 24px;
+  }
+  .stat {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 12px; text-align: center;
+  }
+  .stat .num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+  .stat .label { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
+
+  .coming-soon {
+    background: var(--card); border: 1px dashed var(--border);
+    border-radius: 14px; padding: 32px 20px; text-align: center;
+    color: var(--text-dim); font-size: 0.9rem;
+  }
+  .coming-soon .icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+  footer {
+    text-align: center; padding: 20px; color: var(--text-dim);
+    font-size: 0.75rem; border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    main { padding: 16px 14px 32px; }
+    .status-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat .num { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="avatar">📊</div>
+  <h1>Pluto Dashboard</h1>
+  <p>Investment Learning & Prediction Agent</p>
+</header>
+
+<main>
+
+  <!-- Quick Stats -->
+  <div class="section-label">At a Glance</div>
+  <div class="status-cards">
+    <div class="stat"><div class="num">📊</div><div class="label">Active</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">Alerts Sent</div></div>
+    <div class="stat"><div class="num">—</div><div class="label">SET Monitored</div></div>
+  </div>
+
+  <!-- Market Status -->
+  <div class="section-label">Markets</div>
+  <div class="card">
+    <span class="icon">🇺🇸</span>
+    <div class="info"><div class="title">US Markets</div><div class="sub">Google Finance, Yahoo Finance, CNBC</div></div>
+    <span class="arrow">→</span>
+  </div>
+  <div class="card">
+    <span class="icon">🇹🇭</span>
+    <div class="info"><div class="title">Thai SET</div><div class="sub">set.or.th · Real-time monitoring</div></div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Core Capabilities -->
+  <div class="section-label">Capabilities</div>
+  <div class="card">
+    <span class="icon">📰</span>
+    <div class="info"><div class="title">Stock News Scanning</div><div class="sub">US & Thai market news aggregation</div></div>
+    <span class="arrow">→</span>
+  </div>
+  <div class="card">
+    <span class="icon">📈</span>
+    <div class="info"><div class="title">Investment Analysis</div><div class="sub">Data-driven, concise, emoji-enhanced</div></div>
+    <span class="arrow">→</span>
+  </div>
+  <div class="card">
+    <span class="icon">🔔</span>
+    <div class="info"><div class="title">SET Alerts</div><div class="sub">Price alerts and market movements</div></div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Outputs -->
+  <div style="margin-top: 24px;">
+    <div class="section-label">Recent Outputs</div>
+    <div class="coming-soon">
+      <span class="icon">📭</span>
+      No outputs yet — Pluto is warming up.
+      <br><br>
+      <small>Start a task via Hypnos @HypnosBot to generate analysis.</small>
+    </div>
+  </div>
+
+</main>
+
+<footer>Pluto · Hermes · FOR HERMES</footer>
+
+</body>
+</html>

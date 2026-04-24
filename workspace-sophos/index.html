@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧐 Sophos Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #060e0c;
+    --card: #0c1a16;
+    --card-hover: #112520;
+    --border: #163028;
+    --text: #d0e8e0;
+    --text-dim: #508070;
+    --accent: #00d4aa;
+    --accent2: #7fffcc;
+    --amber: #f0a030;
+    --purple: #a070ff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, #081410 0%, #0c1e18 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 24px 20px;
+    text-align: center;
+  }
+  .avatar {
+    width: 64px; height: 64px;
+    margin: 0 auto 12px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0a2820, #0d3528);
+    border: 2px solid rgba(0,212,170,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 0 24px rgba(0,212,170,0.15);
+  }
+  header h1 { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+  header p { color: var(--text-dim); font-size: 0.82rem; }
+
+  main { padding: 24px 20px 40px; max-width: 760px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; padding-left: 4px;
+  }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px 20px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.2s;
+  }
+  .card:hover {
+    background: var(--card-hover); transform: translateY(-2px);
+    border-color: rgba(0,212,170,0.3);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  }
+  .card .icon { font-size: 1.5rem; }
+  .card .info .title { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+  .card .info .sub { font-size: 0.78rem; color: var(--text-dim); }
+  .card .arrow { margin-left: auto; color: var(--text-dim); font-size: 1.1rem; }
+
+  .status-cards {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 10px; margin-bottom: 24px;
+  }
+  .stat {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 10px; text-align: center;
+  }
+  .stat .num { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+  .stat .num.dim { color: var(--text-dim); }
+  .stat .label { font-size: 0.65rem; color: var(--text-dim); margin-top: 2px; }
+
+  .coming-soon {
+    background: var(--card); border: 1px dashed var(--border);
+    border-radius: 14px; padding: 32px 20px; text-align: center;
+    color: var(--text-dim); font-size: 0.9rem;
+  }
+  .coming-soon .icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+  /* ── Library Section ── */
+  .library-zone {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .zone-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #0a2018 0%, #0c1e18 100%);
+  }
+  .zone-header .icon { font-size: 1.4rem; }
+  .zone-header .info .name { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+  .zone-header .info .sub { font-size: 0.72rem; color: var(--text-dim); }
+  .zone-badge {
+    margin-left: auto;
+    font-size: 0.65rem; font-weight: 600;
+    background: rgba(0,212,170,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(0,212,170,0.2);
+    padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* Shelf grid */
+  .shelves {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    padding: 14px;
+  }
+  .shelf {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex; align-items: center; gap: 10px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .shelf:hover {
+    border-color: rgba(0,212,170,0.3);
+    background: var(--card-hover);
+  }
+  .shelf .emoji { font-size: 1.2rem; }
+  .shelf .name { font-size: 0.78rem; font-weight: 600; flex: 1; }
+  .shelf .count {
+    font-size: 0.65rem;
+    background: rgba(255,255,255,0.06);
+    color: var(--text-dim);
+    padding: 2px 7px; border-radius: 10px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  /* Book cards (shown when shelf active) */
+  .books-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 0 14px 14px;
+  }
+  .book {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .book:hover {
+    border-color: rgba(0,212,170,0.25);
+    background: var(--card-hover);
+  }
+  .book .tag {
+    display: inline-block;
+    font-size: 0.6rem; font-weight: 700;
+    padding: 2px 7px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 7px;
+  }
+  .book .title { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+  .book .desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; }
+
+  /* Input bar */
+  .topic-bar {
+    display: flex; gap: 8px; padding: 0 14px 14px;
+  }
+  .topic-bar input {
+    flex: 1;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 9px 14px;
+    font-size: 0.82rem; color: var(--text);
+    font-family: inherit; outline: none;
+    transition: border-color 0.15s;
+  }
+  .topic-bar input:focus { border-color: var(--accent); }
+  .topic-bar input::placeholder { color: var(--text-dim); }
+  .topic-bar button {
+    background: var(--accent); color: #060e0c;
+    border: none; border-radius: 8px;
+    padding: 9px 16px; font-size: 0.8rem;
+    font-weight: 700; cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .topic-bar button:hover { background: var(--accent2); }
+
+  /* Tag colors per specialty */
+  .tag-cardiology { background: rgba(239,68,68,0.15); color: #f87171; }
+  .tag-pulmonology { background: rgba(6,182,212,0.15); color: #22d3ee; }
+  .tag-gastro { background: rgba(249,115,22,0.15); color: #fb923c; }
+  .tag-hematology { background: rgba(236,72,153,0.15); color: #f472b6; }
+  .tag-nephrology { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .tag-endocrine { background: rgba(234,179,8,0.15); color: #facc15; }
+  .tag-id { background: rgba(168,85,247,0.15); color: #c084fc; }
+  .tag-pharma { background: rgba(236,72,153,0.15); color: #f472b6; }
+  .tag-neuro { background: rgba(139,92,246,0.15); color: #c084fc; }
+  .tag-rheum { background: rgba(249,115,22,0.15); color: #fb923c; }
+  .tag-critical { background: rgba(239,68,68,0.15); color: #f87171; }
+  .tag-derm { background: rgba(249,115,22,0.15); color: #fb923c; }
+  .tag-geri { background: rgba(148,163,184,0.15); color: #94a3b8; }
+  .tag-stats { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .tag-path { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+  footer {
+    text-align: center; padding: 20px; color: var(--text-dim);
+    font-size: 0.75rem; border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    main { padding: 16px 14px 32px; }
+    .status-cards { grid-template-columns: repeat(2, 1fr); }
+    .shelves { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="avatar">🧐</div>
+  <h1>Sophos Dashboard</h1>
+  <p>General Learning &amp; Content Agent</p>
+</header>
+
+<main>
+
+  <!-- Quick Stats -->
+  <div class="section-label" style="margin-top:4px">At a Glance</div>
+  <div class="status-cards">
+    <div class="stat"><div class="num">🧐</div><div class="label">Active</div></div>
+    <div class="stat"><div class="num dim">0</div><div class="label">Feeds</div></div>
+    <div class="stat"><div class="num dim">0</div><div class="label">Articles</div></div>
+    <div class="stat"><div class="num dim">0</div><div class="label">Library Books</div></div>
+  </div>
+
+  <!-- Core Capabilities -->
+  <div class="section-label">Core Capabilities</div>
+
+  <a href="#" class="card">
+    <span class="icon">📡</span>
+    <div class="info"><div class="title">RSS / Blog Monitoring</div><div class="sub">Track AI feeds, medical journals, tech blogs</div></div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="#" class="card">
+    <span class="icon">📝</span>
+    <div class="info"><div class="title">Article Summarization</div><div class="sub">PICO format, structured review, 20+ formats</div></div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="#" class="card">
+    <span class="icon">🧠</span>
+    <div class="info"><div class="title">Knowledge Synthesis</div><div class="sub">LLM Wiki pattern, Obsidian vault integration</div></div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="#" class="card">
+    <span class="icon">🔍</span>
+    <div class="info"><div class="title">Research &amp; Synthesis</div><div class="sub">Deep research, multi-source synthesis</div></div>
+    <span class="arrow">→</span>
+  </a>
+
+  <!-- ── LIBRARY ── -->
+  <div style="margin-top: 8px;">
+    <div class="section-label">📚 Knowledge Library</div>
+
+    <!-- Medicine Zone -->
+    <div class="library-zone">
+      <div class="zone-header">
+        <span class="icon">🏥</span>
+        <div class="info">
+          <div class="name">Medicine Zone</div>
+          <div class="sub">15 specialties · Internal Medicine, Neurology + more</div>
+        </div>
+        <span class="zone-badge">15 Shelves · 0 Books</span>
+      </div>
+
+      <div class="shelves">
+        <div class="shelf" onclick="toggleShelf(this, 'cardio-books')">
+          <span class="emoji">🫀</span><span class="name">Cardiology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'pulmo-books')">
+          <span class="emoji">🫁</span><span class="name">Pulmonology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'gastro-books')">
+          <span class="emoji">🧬</span><span class="name">Gastroenterology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'heme-books')">
+          <span class="emoji">🩸</span><span class="name">Hematology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'nephro-books')">
+          <span class="emoji">🩱</span><span class="name">Nephrology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'endo-books')">
+          <span class="emoji">🧪</span><span class="name">Endocrinology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'id-books')">
+          <span class="emoji">🦠</span><span class="name">Infectious Disease</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'pharma-books')">
+          <span class="emoji">💊</span><span class="name">Pharmacology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'neuro-books')">
+          <span class="emoji">🧠</span><span class="name">Neurology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'rheum-books')">
+          <span class="emoji">🩺</span><span class="name">Rheumatology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'critical-books')">
+          <span class="emoji">⚡</span><span class="name">Critical Care</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'derm-books')">
+          <span class="emoji">🧴</span><span class="name">Dermatology</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'geri-books')">
+          <span class="emoji">👴</span><span class="name">Geriatrics</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'stats-books')">
+          <span class="emoji">🧮</span><span class="name">Statistics &amp; EBM</span><span class="count">0</span>
+        </div>
+        <div class="shelf" onclick="toggleShelf(this, 'path-books')">
+          <span class="emoji">🔬</span><span class="name">Pathology</span><span class="count">0</span>
+        </div>
+      </div>
+
+      <!-- Hidden book sections per shelf -->
+      <div id="cardio-books" class="books-row" style="display:none"></div>
+      <div id="pulmo-books" class="books-row" style="display:none"></div>
+      <div id="gastro-books" class="books-row" style="display:none"></div>
+      <div id="heme-books" class="books-row" style="display:none"></div>
+      <div id="nephro-books" class="books-row" style="display:none"></div>
+      <div id="endo-books" class="books-row" style="display:none"></div>
+      <div id="id-books" class="books-row" style="display:none"></div>
+      <div id="pharma-books" class="books-row" style="display:none"></div>
+      <div id="neuro-books" class="books-row" style="display:none"></div>
+      <div id="rheum-books" class="books-row" style="display:none"></div>
+      <div id="critical-books" class="books-row" style="display:none"></div>
+      <div id="derm-books" class="books-row" style="display:none"></div>
+      <div id="geri-books" class="books-row" style="display:none"></div>
+      <div id="stats-books" class="books-row" style="display:none"></div>
+      <div id="path-books" class="books-row" style="display:none"></div>
+
+      <!-- Empty state per shelf -->
+      <div id="cardio-empty" class="books-row">
+        <div class="book" style="grid-column:1/-1; text-align:center; color:var(--text-dim); cursor:default;">
+          <div style="font-size:1.4rem;margin-bottom:6px">📖</div>
+          <div class="title" style="color:var(--text-dim)">No books yet</div>
+          <div class="desc">Suggest a topic below — I'll research it and add it here</div>
+        </div>
+      </div>
+
+      <!-- Topic Input -->
+      <div class="topic-bar">
+        <input type="text" id="topic-input" placeholder="e.g. Acute Coronary Syndrome, SIADH, Myasthenia Gravis...">
+        <button onclick="submitTopic()">Research →</button>
+      </div>
+    </div>
+
+    <!-- AI & Tech Zone (coming soon) -->
+    <div class="library-zone" style="opacity:0.5; pointer-events:none;">
+      <div class="zone-header">
+        <span class="icon">🤖</span>
+        <div class="info">
+          <div class="name">AI &amp; Tech Zone</div>
+          <div class="sub">LLMs, coding, automation, AI research</div>
+        </div>
+        <span class="zone-badge">Coming Soon</span>
+      </div>
+      <div style="padding:20px;text-align:center;color:var(--text-dim);font-size:0.85rem;">
+        🔒 Zone locked — Medicine Zone first
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Outputs -->
+  <div style="margin-top: 16px;">
+    <div class="section-label">Recent Outputs</div>
+    <div class="coming-soon">
+      <span class="icon">📭</span>
+      No outputs yet — Sophos is warming up.
+      <br><br>
+      <small>Start a task via Telegram @SophoszBot to generate content.</small>
+    </div>
+  </div>
+
+  <!-- Chat -->
+  <div style="margin-top: 16px;">
+    <a href="telegram://resolve?domain=SophoszBot" class="card" style="background: linear-gradient(135deg, #0a2820, #0d3028); border-color: rgba(0,212,170,0.3);">
+      <span class="icon">💬</span>
+      <div class="info"><div class="title">Chat with Sophos</div><div class="sub">@SophoszBot — Telegram</div></div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+</main>
+
+<footer>Sophos · Hermes · FOR HERMES</footer>
+
+<script>
+  let activeShelf = null;
+
+  function toggleShelf(el, bookId) {
+    const allBooks = document.querySelectorAll('[id$="-books"]');
+    const allEmpty = document.querySelectorAll('.books-row:not([id])');
+    const emptyState = document.getElementById('cardio-empty');
+
+    if (activeShelf === bookId) {
+      // Collapse
+      document.getElementById(bookId).style.display = 'none';
+      el.style.borderColor = '';
+      activeShelf = null;
+    } else {
+      // Collapse previous
+      allBooks.forEach(b => b.style.display = 'none');
+      document.querySelectorAll('.shelf').forEach(s => s.style.borderColor = '');
+      // Expand new
+      document.getElementById(bookId).style.display = 'grid';
+      el.style.borderColor = 'rgba(0,212,170,0.4)';
+      activeShelf = bookId;
+    }
+  }
+
+  function submitTopic() {
+    const input = document.getElementById('topic-input');
+    const topic = input.value.trim();
+    if (!topic) return;
+    // Expand a default shelf (Cardiology) to show input received
+    toggleShelf(document.querySelector('.shelf'), 'cardio-books');
+    input.value = '';
+    input.placeholder = `Processing: "${topic}"... I'll add it to the right shelf shortly!`;
+  }
+</script>
+
+</body>
+</html>

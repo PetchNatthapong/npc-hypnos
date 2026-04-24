@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hypnos Hub 🌙 — Petch's Agent Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #080810;
+    --card: #10101c;
+    --card-hover: #16162a;
+    --border: #1e1e30;
+    --text: #d0d0e8;
+    --text-dim: #6060a0;
+    --accent-hypnos: #9b8fff;
+    --accent-nevr: #6c63ff;
+    --accent-sophos: #00d4aa;
+    --accent-pluto: #ffd93d;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0d0d1a 0%, #12122a 60%, #0a0a18 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(155,143,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hypnos-emblem {
+    width: 72px; height: 72px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a1a35, #2a2a50);
+    border: 2px solid rgba(155,143,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 0 30px rgba(155,143,255,0.2);
+  }
+  header h1 {
+    font-size: 1.5rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-hypnos), #c4b8ff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  header p { color: var(--text-dim); font-size: 0.8rem; letter-spacing: 0.5px; }
+
+  main { padding: 28px 20px 40px; max-width: 700px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 14px; padding-left: 4px;
+  }
+
+  .agent-grid { display: flex; flex-direction: column; gap: 14px; }
+
+  .agent-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px;
+    text-decoration: none; color: var(--text);
+    display: flex; align-items: center; gap: 16px;
+    transition: all 0.25s ease;
+    position: relative; overflow: hidden;
+  }
+  .agent-card::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 4px;
+    border-radius: 16px 0 0 16px;
+  }
+  .agent-card.nevr::before { background: var(--accent-nevr); }
+  .agent-card.sophos::before { background: var(--accent-sophos); }
+  .agent-card.pluto::before { background: var(--accent-pluto); }
+
+  .agent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.1);
+  }
+  .agent-card.nevr:hover { border-color: rgba(108,99,255,0.4); background: #14142a; }
+  .agent-card.sophos:hover { border-color: rgba(0,212,170,0.4); background: #0a1a16; }
+  .agent-card.pluto:hover { border-color: rgba(255,217,61,0.4); background: #1a180a; }
+
+  .agent-avatar {
+    width: 54px; height: 54px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; flex-shrink: 0;
+  }
+  .agent-avatar.nevr {
+    background: linear-gradient(135deg, #1a1a3a, #2a2a5a);
+    border: 1px solid rgba(108,99,255,0.3);
+  }
+  .agent-avatar.sophos {
+    background: linear-gradient(135deg, #0a2a25, #0d4035);
+    border: 1px solid rgba(0,212,170,0.3);
+  }
+  .agent-avatar.pluto {
+    background: linear-gradient(135deg, #2a2500, #3a3500);
+    border: 1px solid rgba(255,217,61,0.3);
+  }
+
+  .agent-info { flex: 1; min-width: 0; }
+  .agent-info .agent-name {
+    font-size: 1.05rem; font-weight: 700;
+    margin-bottom: 2px; display: flex; align-items: center; gap: 6px;
+  }
+  .agent-info .agent-name .emoji { font-size: 0.9rem; }
+  .agent-info .agent-role { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 4px; }
+  .agent-info .agent-desc {
+    font-size: 0.8rem; color: var(--text-dim); line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .agent-info .agent-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.72rem; color: var(--text-dim); margin-top: 6px;
+    opacity: 0.7;
+  }
+  .agent-info .agent-link span { text-decoration: underline; }
+
+  .agent-arrow { font-size: 1.2rem; color: var(--text-dim); flex-shrink: 0; transition: transform 0.2s; }
+  .agent-card:hover .agent-arrow { transform: translateX(4px); }
+
+  .hypnos-card {
+    background: linear-gradient(135deg, #0d0d1a, #15152e);
+    border: 1px solid rgba(155,143,255,0.25);
+    border-radius: 16px; padding: 20px;
+    text-decoration: none; color: var(--text);
+    display: flex; align-items: center; gap: 16px;
+    transition: all 0.25s ease; margin-bottom: 28px;
+  }
+  .hypnos-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(155,143,255,0.15);
+    border-color: rgba(155,143,255,0.5);
+  }
+  .hypnos-card .hypnos-avatar {
+    width: 54px; height: 54px; border-radius: 14px;
+    background: linear-gradient(135deg, #1a1a35, #252550);
+    border: 2px solid rgba(155,143,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(155,143,255,0.2);
+  }
+  .hypnos-info { flex: 1; }
+  .hypnos-info .name { font-size: 1rem; font-weight: 700; color: var(--accent-hypnos); margin-bottom: 2px; }
+  .hypnos-info .desc { font-size: 0.8rem; color: var(--text-dim); }
+
+  .status-bar {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin-bottom: 28px;
+  }
+  .status-pill {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 12px; text-align: center;
+  }
+  .status-pill .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4ade80; display: inline-block; margin-bottom: 4px;
+    box-shadow: 0 0 6px rgba(74,222,128,0.6);
+  }
+  .status-pill .label { font-size: 0.7rem; color: var(--text-dim); }
+  .status-pill .value { font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
+
+  .qa-btn {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--text); font-size: 0.9rem;
+    transition: all 0.2s; margin-bottom: 8px;
+  }
+  .qa-btn:hover {
+    background: var(--card-hover);
+    border-color: rgba(155,143,255,0.3);
+    transform: translateX(4px);
+  }
+  .qa-btn .icon { font-size: 1.2rem; }
+  .qa-btn .text { flex: 1; }
+  .qa-btn .tag {
+    font-size: 0.7rem; padding: 3px 8px; border-radius: 6px;
+    background: rgba(155,143,255,0.15); color: var(--accent-hypnos);
+  }
+
+  footer {
+    text-align: center; padding: 20px;
+    color: var(--text-dim); font-size: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 24px 20px 16px; }
+    .hypnos-emblem { width: 60px; height: 60px; font-size: 1.6rem; }
+    header h1 { font-size: 1.3rem; }
+    main { padding: 20px 16px 32px; }
+    .agent-card { padding: 16px; gap: 14px; }
+    .agent-avatar { width: 48px; height: 48px; font-size: 1.5rem; }
+    .agent-info .agent-desc { -webkit-line-clamp: 1; }
+    .status-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hypnos-emblem">🌙</div>
+  <h1>Hypnos Hub</h1>
+  <p>Petch NPC's Agent Dashboard</p>
+</header>
+
+<main>
+
+  <!-- Status -->
+  <div class="status-bar">
+    <div class="status-pill">
+      <div class="dot"></div>
+      <div class="label">Hypnos</div>
+      <div class="value">@HypnosBot</div>
+    </div>
+    <div class="status-pill">
+      <div class="dot"></div>
+      <div class="label">Nevr</div>
+      <div class="value">@NevrzBot</div>
+    </div>
+    <div class="status-pill">
+      <div class="dot"></div>
+      <div class="label">Sophos</div>
+      <div class="value">@SophoszBot</div>
+    </div>
+  </div>
+
+  <!-- Hypnos Self -->
+  <a href="telegram://resolve?domain=HypnosBot" class="hypnos-card">
+    <div class="hypnos-avatar">🌙</div>
+    <div class="hypnos-info">
+      <div class="name">Hypnos 🌙 — Main Hub</div>
+      <div class="desc">Coordinate everything. Ask me anything.</div>
+    </div>
+    <div class="agent-arrow">→</div>
+  </a>
+
+  <!-- Agent Cards -->
+  <div class="section-label">Agent Dashboards</div>
+  <div class="agent-grid">
+
+    <!-- Nevr -->
+    <a href="https://t.me/NevrzBot" class="agent-card nevr">
+      <div class="agent-avatar nevr">🧠</div>
+      <div class="agent-info">
+        <div class="agent-name">Nevr <span class="emoji">🧠</span></div>
+        <div class="agent-role">Neurology Learning Agent</div>
+        <div class="agent-desc">Board prep, clinical cases, neuro wiki — US, UK & Thai boards</div>
+        <div class="agent-link">📂 <span>workspace-nevr/index.html</span></div>
+      </div>
+      <div class="agent-arrow">→</div>
+    </a>
+
+    <!-- Sophos -->
+    <a href="https://t.me/SophoszBot" class="agent-card sophos">
+      <div class="agent-avatar sophos">🧐</div>
+      <div class="agent-info">
+        <div class="agent-name">Sophos <span class="emoji">🧐</span></div>
+        <div class="agent-role">General Learning & Content Agent</div>
+        <div class="agent-desc">RSS monitoring, article review, knowledge synthesis, LLM Wiki</div>
+        <div class="agent-link">📂 <span>workspace-sophos/index.html</span></div>
+      </div>
+      <div class="agent-arrow">→</div>
+    </a>
+
+    <!-- Pluto -->
+    <a href="https://t.me/NevrzBot" class="agent-card pluto" title="Pluto — Investment Agent (Telegram bot coming soon)">
+      <div class="agent-avatar pluto">📊</div>
+      <div class="agent-info">
+        <div class="agent-name">Pluto <span class="emoji">📊</span></div>
+        <div class="agent-role">Investment Learning Agent</div>
+        <div class="agent-desc">US & Thai market monitoring, SET alerts, investment analysis</div>
+        <div class="agent-link">📂 <span>workspace-pluto/index.html</span></div>
+      </div>
+      <div class="agent-arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- Quick Actions -->
+  <div style="margin-top: 28px;">
+    <div class="section-label">Quick Chat</div>
+    <a href="telegram://resolve?domain=NevrzBot" class="qa-btn">
+      <span class="icon">🧠</span>
+      <span class="text">Chat with Nevr</span>
+      <span class="tag">Telegram</span>
+    </a>
+    <a href="telegram://resolve?domain=SophoszBot" class="qa-btn">
+      <span class="icon">🧐</span>
+      <span class="text">Chat with Sophos</span>
+      <span class="tag">Telegram</span>
+    </a>
+    <a href="telegram://resolve?domain=HypnosBot" class="qa-btn">
+      <span class="icon">🌙</span>
+      <span class="text">Chat with Hypnos</span>
+      <span class="tag">Telegram</span>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <span>Hypnos Hub · Hermes Multi-Agent System · FOR HERMES</span>
+</footer>
+
+</body>
+</html>

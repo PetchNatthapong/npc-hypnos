@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Nevr's Neurology Library</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-hover: #1a1a25;
+    --border: #2a2a3a;
+    --text: #e0e0e8;
+    --text-dim: #8888a0;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --red: #ff6b6b;
+    --yellow: #ffd93d;
+    --green: #6bcb77;
+    --phase1: #6c63ff;
+    --phase2: #00d4aa;
+    --phase3: #ffd93d;
+    --phase4: #ff9f43;
+    --phase5: #ff6b6b;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 { font-size: 1.5rem; font-weight: 700; }
+  header span { color: var(--accent); }
+  header p { color: var(--text-dim); font-size: 0.9rem; }
+
+  nav {
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  nav a:hover { background: var(--border); color: var(--text); }
+  nav a.active { background: var(--accent); color: white; }
+
+  /* HERO */
+  .hero {
+    padding: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-card .label {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+  .stat-card.green .num { color: var(--phase2); }
+  .stat-card.yellow .num { color: var(--phase3); }
+  .stat-card.red .num { color: var(--phase5); }
+
+  /* GOAL BANNER */
+  .goal-banner {
+    background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,212,170,0.1));
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .goal-banner .emoji { font-size: 2rem; }
+  .goal-banner h3 { font-size: 1rem; color: var(--accent); margin-bottom: 4px; }
+  .goal-banner p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* MAIN GRID */
+  main { padding: 40px; }
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    border-radius: 2px;
+  }
+  .phase1-title::before { background: var(--phase1); }
+  .phase2-title::before { background: var(--phase2); }
+  .phase3-title::before { background: var(--phase3); }
+  .phase4-title::before { background: var(--phase4); }
+
+  /* PHASE BLOCKS */
+  .phase-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .phase-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .phase-header:hover { background: var(--card-hover); }
+  .phase-header h3 { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .phase-header .badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .badge-active { background: rgba(108,99,255,0.2); color: var(--phase1); }
+  .badge-ready { background: rgba(0,212,170,0.15); color: var(--phase2); }
+  .badge-done { background: rgba(107,203,119,0.2); color: var(--green); }
+  .phase-header .count { color: var(--text-dim); font-size: 0.85rem; }
+  .phase-header .arrow { color: var(--text-dim); transition: transform 0.2s; }
+  .phase-block.open .arrow { transform: rotate(180deg); }
+
+  .phase-content { display: none; padding: 0 20px 20px; }
+  .phase-block.open .phase-content { display: block; }
+
+  /* TOPIC LIST */
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .topic-item {
+    background: #0d0d14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .topic-item:hover {
+    border-color: var(--accent);
+    background: rgba(108,99,255,0.08);
+    transform: translateX(4px);
+  }
+  .topic-item.done { border-color: var(--green); opacity: 0.7; }
+  .topic-item .icon { font-size: 1.1rem; }
+  .topic-item .check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .topic-item.done .check { background: var(--green); border-color: var(--green); }
+  .topic-item .tag {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(108,99,255,0.15);
+    color: var(--accent);
+    margin-left: auto;
+  }
+
+  /* WEEK SCHEDULE */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .day-card {
+    background: #0d0d14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 12px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .day-card:hover { border-color: var(--accent); }
+  .day-card.rest { border-color: rgba(107,203,119,0.3); }
+  .day-card .day {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .day-card .emoji { font-size: 1.5rem; margin-bottom: 6px; }
+  .day-card .topic { font-size: 0.8rem; font-weight: 600; }
+  .day-card .status {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .day-card.done .status { color: var(--green); }
+  .day-card.active .status { color: var(--accent); }
+
+  /* RESOURCES */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .resource-card {
+    background: #0d0d14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .resource-card:hover {
+    border-color: var(--accent);
+    background: rgba(108,99,255,0.08);
+    transform: translateY(-2px);
+  }
+  .resource-card .icon { font-size: 1.5rem; }
+  .resource-card .info h4 { font-size: 0.9rem; font-weight: 600; }
+  .resource-card .info p { font-size: 0.75rem; color: var(--text-dim); }
+
+  /* WEAKNESS */
+  .weakness-list {
+    margin-top: 12px;
+  }
+  .weakness-item {
+    background: #0d0d14;
+    border: 1px solid rgba(255,107,107,0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .weakness-item .num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255,107,107,0.2);
+    color: var(--red);
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .weakness-item .text { flex: 1; font-size: 0.9rem; }
+  .weakness-item .date { font-size: 0.75rem; color: var(--text-dim); }
+  .no-weakness {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  .no-weakness .emoji { font-size: 2rem; margin-bottom: 8px; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* COLLAPSE SCRIPT */
+  .phase-header { user-select: none; }
+
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; }
+    .week-grid { grid-template-columns: repeat(4, 1fr); }
+    header { padding: 16px 20px; }
+    main, .hero { padding: 20px; }
+    .goal-banner { margin: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 Nevr's Neurology <span>Library</span></h1>
+  <p>Supreme Neurologist in progress — Petch NPC</p>
+  <nav>
+    <a href="#" class="active">📚 Library</a>
+    <a href="wiki/foundation/START_HERE.md">🚀 Start Here</a>
+    <a href="STUDY_PLAN.md">📋 Study Plan</a>
+    <a href="anki/NEURO.csv">🃏 Anki Deck</a>
+    <a href="cases/LOG.md">🏥 Cases</a>
+    <a href="WEAKNESSES.md">⚠️ Weaknesses</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-grid">
+    <div class="stat-card">
+      <div class="num">0/8</div>
+      <div class="label">Phase 1 — Foundation</div>
+    </div>
+    <div class="stat-card green">
+      <div class="num">0/4</div>
+      <div class="label">Phase 2 — Clinical</div>
+    </div>
+    <div class="stat-card yellow">
+      <div class="num">0/9</div>
+      <div class="label">Phase 3 — Subspecialty</div>
+    </div>
+    <div class="stat-card red">
+      <div class="num">🎓</div>
+      <div class="label">Goal: Supreme</div>
+    </div>
+  </div>
+
+  <div class="goal-banner">
+    <div class="emoji">🎯</div>
+    <div>
+      <h3>Current Mission: Phase 1 — Foundation</h3>
+      <p>Month 1 → Neuroanatomy + Cellular | Week 1 → Gross Brain Anatomy | 1–2 hrs/day</p>
+    </div>
+    <div style="margin-left: auto; text-align: right;">
+      <div style="font-size: 0.75rem; color: var(--text-dim);">Next up</div>
+      <div style="font-weight: 600;">📖 START_HERE.md</div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- PHASE 1 -->
+  <div class="section-title phase1-title">Phase 1 — Foundation</div>
+  <div class="phase-block open" id="phase1">
+    <div class="phase-header" onclick="togglePhase('phase1')">
+      <h3>🧠 Neuroanatomy + Cellular <span class="badge badge-active">🔄 Active</span></h3>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="count">0/8 topics</span>
+        <span class="arrow">▼</span>
+      </div>
+    </div>
+    <div class="phase-content">
+      <div class="topic-grid">
+        <a href="wiki/foundation/NEUROANATOMY_GROSS_BRAIN.md" class="topic-item">
+          <span class="icon">🧠</span>
+          <span>Neuroanatomy — Gross Brain</span>
+          <span class="tag">start</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">🩸</span>
+          <span>Neuroanatomy — Blood Supply</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">🧠</span>
+          <span>Neuroanatomy — Brainstem</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">🎯</span>
+          <span>Neuroanatomy — Cerebellum</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">💜</span>
+          <span>Neuroanatomy — Limbic System</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">🔌</span>
+          <span>Cranial Nerves — All 12</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">⚡</span>
+          <span>Cellular — Action Potentials</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">🔬</span>
+          <span>Cellular — Synaptic Transmission</span>
+        </a>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <div class="section-title" style="font-size: 0.9rem; color: var(--text-dim);">📅 Week 1 Schedule</div>
+        <div class="week-grid">
+          <div class="day-card">
+            <div class="day">Mon</div>
+            <div class="emoji">🧠</div>
+            <div class="topic">Sulci / Gyri / Lobes</div>
+            <div class="status">pending</div>
+          </div>
+          <div class="day-card">
+            <div class="day">Tue</div>
+            <div class="emoji">🧠</div>
+            <div class="topic">Deep Gray Nuclei</div>
+            <div class="status">pending</div>
+          </div>
+          <div class="day-card">
+            <div class="day">Wed</div>
+            <div class="emoji">💧</div>
+            <div class="topic">Ventricles / CSF</div>
+            <div class="status">pending</div>
+          </div>
+          <div class="day-card">
+            <div class="day">Thu</div>
+            <div class="emoji">🩸</div>
+            <div class="topic">Anterior Supply</div>
+            <div class="status">pending</div>
+          </div>
+          <div class="day-card">
+            <div class="day">Fri</div>
+            <div class="emoji">🩸</div>
+            <div class="topic">Posterior Supply</div>
+            <div class="status">pending</div>
+          </div>
+          <div class="day-card">
+            <div class="day">Sat</div>
+            <div class="emoji">🔄</div>
+            <div class="topic">Week 1 Review</div>
+            <div class="status">pending</div>
+          </div>
+          <div class="day-card rest">
+            <div class="day">Sun</div>
+            <div class="emoji">😴</div>
+            <div class="topic">Rest</div>
+            <div class="status">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="section-title phase2-title">Phase 2 — Clinical Core</div>
+  <div class="phase-block" id="phase2">
+    <div class="phase-header" onclick="togglePhase('phase2')">
+      <h3>🩺 Examination + Localization <span class="badge badge-ready">📋 Ready</span></h3>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="count">0/4 topics</span>
+        <span class="arrow">▼</span>
+      </div>
+    </div>
+    <div class="phase-content">
+      <div class="topic-grid">
+        <a href="#" class="topic-item">
+          <span class="icon">🩺</span>
+          <span>Complete Neurological Examination</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">📍</span>
+          <span>Lesion Localization</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">🔬</span>
+          <span>Diagnostic Interpretation</span>
+        </a>
+        <a href="#" class="topic-item">
+          <span class="icon">💊</span>
+          <span>Core Pharmacology</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="section-title phase3-title">Phase 3 — Subspecialty</div>
+  <div class="phase-block" id="phase3">
+    <div class="phase-header" onclick="togglePhase('phase3')">
+      <h3>🧩 Deep Dives <span class="badge badge-ready">📋 Ready</span></h3>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="count">0/9 topics</span>
+        <span class="arrow">▼</span>
+      </div>
+    </div>
+    <div class="phase-content">
+      <div class="topic-grid">
+        <a href="#" class="topic-item"><span class="icon">⚡</span><span>Epilepsy</span></a>
+        <a href="#" class="topic-item"><span class="icon">🌀</span><span>Movement Disorders</span></a>
+        <a href="#" class="topic-item"><span class="icon">🫀</span><span>Cerebrovascular / Stroke</span></a>
+        <a href="#" class="topic-item"><span class="icon">💪</span><span>Neuromuscular</span></a>
+        <a href="#" class="topic-item"><span class="icon">🤕</span><span>Headache & Pain</span></a>
+        <a href="#" class="topic-item"><span class="icon">🔴</span><span>Demyelinating Diseases</span></a>
+        <a href="#" class="topic-item"><span class="icon">🧪</span><span>Autoimmune Encephalitis</span></a>
+        <a href="#" class="topic-item"><span class="icon">😴</span><span>Sleep Medicine</span></a>
+        <a href="#" class="topic-item"><span class="icon">🧬</span><span>Neuroimaging</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="section-title phase4-title">Phase 4 — Case & Board</div>
+  <div class="phase-block" id="phase4">
+    <div class="phase-header" onclick="togglePhase('phase4')">
+      <h3>📝 Case Integration <span class="badge badge-ready">📋 Ready</span></h3>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="count">0/50+ cases</span>
+        <span class="arrow">▼</span>
+      </div>
+    </div>
+    <div class="phase-content">
+      <div class="topic-grid">
+        <a href="#" class="topic-item"><span class="icon">📋</span><span>Differential Diagnosis Drills</span></a>
+        <a href="#" class="topic-item"><span class="icon">🏥</span><span>Case Write-ups (50+)</span></a>
+        <a href="#" class="topic-item"><span class="icon">🇺🇸</span><span>USMLE Qbank</span></a>
+        <a href="#" class="topic-item"><span class="icon">🇬🇧</span><span>MRCP Qbank</span></a>
+        <a href="#" class="topic-item"><span class="icon">🇹🇭</span><span>Thai Board Prep</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="section-title" style="margin-top: 40px;">📦 Resources</div>
+  <div class="resource-grid">
+    <a href="wiki/TEMPLATES.md" class="resource-card">
+      <div class="icon">📝</div>
+      <div class="info">
+        <h4>Templates</h4>
+        <p>Wiki / Case / Anki / Review</p>
+      </div>
+    </a>
+    <a href="anki/NEURO.csv" class="resource-card">
+      <div class="icon">🃏</div>
+      <div class="info">
+        <h4>Anki Deck</h4>
+        <p>21 cards (growing to 1000+)</p>
+      </div>
+    </a>
+    <a href="cases/LOG.md" class="resource-card">
+      <div class="icon">🏥</div>
+      <div class="info">
+        <h4>Case Log</h4>
+        <p>Clinical case write-ups</p>
+      </div>
+    </a>
+    <a href="WEAKNESSES.md" class="resource-card">
+      <div class="icon">⚠️</div>
+      <div class="info">
+        <h4>Weakness Tracker</h4>
+        <p>Mistakes + fix protocol</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- WEAKNESSES -->
+  <div class="section-title" style="margin-top: 40px;">⚠️ Active Weaknesses</div>
+  <div class="phase-block open">
+    <div class="phase-content">
+      <div class="weakness-list">
+        <div class="no-weakness">
+          <div class="emoji">✨</div>
+          <div>No weaknesses yet — start learning!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  🧠 Nevr's Neurology Library — Built for Petch NPC — 2026
+</footer>
+
+<script>
+  function togglePhase(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
