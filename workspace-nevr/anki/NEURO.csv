@@ -17,3 +17,18 @@
 "What is the postcentral gyrus function?","Primary somatosensory cortex (S1) — Brodmann areas 3, 1, 2 — sensory input from body","neuroanatomy|gross-brain|foundation",1,draft
 "Direct pathway effect on movement?","Facilitates movement — cortex excites striatum → inhibits GPi → disinhibits thalamus → excites cortex","neuroanatomy|gross-brain|foundation",1,draft
 "Indirect pathway effect on movement?","Inhibits movement — cortex excites striatum → activates GPi → inhibits thalamus → inhibits cortex","neuroanatomy|gross-brain|foundation",1,draft
+"Direct pathway of basal ganglia — effect on movement?","Facilitates movement (Go)","basal-ganglia|foundation",1
+"Indirect pathway of basal ganglia — effect on movement?","Suppresses movement (Stop)","basal-ganglia|foundation",1
+"D1 receptor location and effect?","Striatum; excites direct pathway → facilitates movement","basal-ganglia|foundation",1
+"D2 receptor location and effect?","Striatum; inhibits indirect pathway → disinhibits movement","basal-ganglia|foundation",1
+"Parkinson disease — what degenerates?","Substantia nigra pars compacta","basal-ganglia|foundation",1
+"Hemiballismus — lesion of which structure?","Contralateral subthalamic nucleus","basal-ganglia|foundation",1
+"Huntington disease — what is seen on imaging?","Caudate nucleus atrophy, ex vacuo hydrocephalus","basal-ganglia|foundation",1
+"DBS target for Parkinson — two options?","GPi (globus pallidus internus) or STN (subthalamic nucleus)","basal-ganglia|foundation",1
+"What separates caudate from putamen?","Internal capsule","basal-ganglia|foundation",1
+"Parkinson — why is there too much GPi/SNr activity?","Loss of dopamine → disinhibition of indirect pathway → STN overactive → GPi overactive","basal-ganglia|foundation",1
+"SNr stands for?","Substantia nigra pars reticulata","basal-ganglia|foundation",1
+"Thalamus receives input from which basal ganglia structures?","GPi and SNr","basal-ganglia|foundation",1
+"Two major outputs of basal ganglia to thalamus?","GPi → VA/VL thalamus; SNr → VA/VL thalamus","basal-ganglia|foundation",1
+"Huntington disease — genetic mutation?","CAG trinucleotide repeat expansion in huntingtin gene","basal-ganglia|foundation",1
+"Huntington — triad?","Chorea + psychiatric symptoms + cognitive decline","basal-ganglia|foundation",1
