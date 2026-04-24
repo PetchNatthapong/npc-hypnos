@@ -30,5 +30,5 @@ Formerly **HerPapez** — rebuilt as Nevr with optimized knowledge management.
 
 ## Dashboard
 
-- Main: `https://oecd-founder-clan-vcr.trycloudflare.com/outputs/dashboard_new.html`
-- Library: `https://oecd-founder-clan-vcr.trycloudflare.com/outputs/library.html`
+- Main: `https://npc-hypnos.pages.dev/workspace-nevr/index.html`
+- Hub (all agents): `https://npc-hypnos.pages.dev/`
