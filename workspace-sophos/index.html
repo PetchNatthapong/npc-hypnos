@@ -241,7 +241,7 @@
     <div class="stat"><div class="num">🧐</div><div class="label">Active</div></div>
     <div class="stat"><div class="num dim">0</div><div class="label">Feeds</div></div>
     <div class="stat"><div class="num dim">0</div><div class="label">Articles</div></div>
-    <div class="stat"><div class="num dim">0</div><div class="label">Library Books</div></div>
+    <div class="stat"><div class="num dim">1</div><div class="label">Library Books</div></div>
   </div>
 
   <!-- Core Capabilities -->
@@ -283,7 +283,7 @@
           <div class="name">Medicine Zone</div>
           <div class="sub">15 specialties · Internal Medicine, Neurology + more</div>
         </div>
-        <span class="zone-badge">15 Shelves · 0 Books</span>
+        <span class="zone-badge">15 Shelves · 1 Book</span>
       </div>
 
       <div class="shelves">
@@ -312,7 +312,7 @@
           <span class="emoji">💊</span><span class="name">Pharmacology</span><span class="count">0</span>
         </div>
         <div class="shelf" onclick="toggleShelf(this, 'neuro-books')">
-          <span class="emoji">🧠</span><span class="name">Neurology</span><span class="count">0</span>
+          <span class="emoji">🧠</span><span class="name">Neurology</span><span class="count">1</span>
         </div>
         <div class="shelf" onclick="toggleShelf(this, 'rheum-books')">
           <span class="emoji">🩺</span><span class="name">Rheumatology</span><span class="count">0</span>
@@ -343,7 +343,13 @@
       <div id="endo-books" class="books-row" style="display:none"></div>
       <div id="id-books" class="books-row" style="display:none"></div>
       <div id="pharma-books" class="books-row" style="display:none"></div>
-      <div id="neuro-books" class="books-row" style="display:none"></div>
+      <div id="neuro-books" class="books-row" style="display:none">
+        <div class="book">
+          <span class="tag tag-neuro">Neurology</span>
+          <div class="title">Headache With Fever</div>
+          <div class="desc">Algorithmic approach to fever+headache. Meningitis, encephalitis, abscess, non-infectious causes. Practical Neurology, Jan-Feb 2026.</div>
+        </div>
+      </div>
       <div id="rheum-books" class="books-row" style="display:none"></div>
       <div id="critical-books" class="books-row" style="display:none"></div>
       <div id="derm-books" class="books-row" style="display:none"></div>
