@@ -1,4 +1,4 @@
-const PASSWORD = 'KFoster'; // change this
+const PASSWORD='npc-atlas';
 
 export default {
   async fetch(request) {
