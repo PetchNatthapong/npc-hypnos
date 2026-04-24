@@ -135,7 +135,7 @@
 ## Post-Lesson Git Push Workflow
 
 When Nevr finishes a lesson/study session:
-1. Send Telegram message to Hypnos (@HypnosBot) via bot token `8123197166:AAFQafWxt8zBUQo1m9CBlBTxTFE2YueUl2A`
+1. Send Telegram message to Hypnos (@KFosterBot) via bot token `8123197166:AAFQafWxt8zBUQo1m9CBlBTxTFE2YueUl2A`
 2. Chat ID: `8763794609`
 3. Message format: `"✅ Nevr lesson done — [topic]. Time to push workspace-nevr/ files to git."`
 4. Use `send_message` tool or `curl` to Telegram Bot API
