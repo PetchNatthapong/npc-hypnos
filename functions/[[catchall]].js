@@ -4,8 +4,16 @@ export default {
   async fetch(request) {
     const cookie = request.headers.get('Cookie') || '';
     if (cookie.includes('auth=ok')) {
-      return await doServe(request);
+      // Serve static asset — construct new request to avoid loop
+      const url = new URL(request.url);
+      const newReq = new Request(url.origin + url.pathname, {
+        method: 'GET',
+        headers: {},
+        redirect: 'follow'
+      });
+      return fetch(newReq);
     }
+
     if (request.method === 'POST') {
       const formData = await request.formData();
       if (formData.get('password') === PASSWORD) {
@@ -18,27 +26,13 @@ export default {
         });
       }
     }
+
     return new Response(LOGIN_PAGE, {
       headers: { 'Content-Type': 'text/html' },
       status: 401
     });
   }
 };
-
-async function doServe(request) {
-  const url = new URL(request.url);
-  const path = url.pathname;
-
-  try {
-    const response = await fetch(request);
-    if (response.status === 404) {
-      return new Response('Not found', { status: 404 });
-    }
-    return response;
-  } catch (e) {
-    return new Response('Service unavailable', { status: 503 });
-  }
-}
 
 const LOGIN_PAGE = `<!DOCTYPE html>
 <html>
