@@ -1,21 +1,19 @@
-front,back,tags,phase,status
-"What are the 4 lobes of the cerebral cortex?","Frontal, Parietal, Temporal, Occipital","neuroanatomy|gross-brain|foundation",1,draft
-"What is the function of the frontal lobe?","Motor function, executive planning, speech production (Broca), personality, decision-making","neuroanatomy|gross-brain|foundation",1,draft
-"What is the function of the parietal lobe?","Sensory integration, spatial awareness, Wernicke area (language comprehension)","neuroanatomy|gross-brain|foundation",1,draft
-"What is the blood supply of the anterior cerebral artery (ACA)?","Medial surface of frontal and parietal lobes, anterior 2/3 of corpus callosum, caudate head, internal capsule (anterior limb)","neuroanatomy|blood-supply|foundation",1,draft
-"What is the blood supply of the middle cerebral artery (MCA)?","Lateral surface of frontal, parietal, temporal lobes; deep structures (putamen, globus pallidus, internal capsule)","neuroanatomy|blood-supply|foundation",1,draft
-"Name the 3 arteries that supply the brainstem","Posterior cerebral artery (PCA), Basilar artery, Superior cerebellar artery (SCA)","neuroanatomy|blood-supply|brainstem|foundation",1,draft
-"What are the 3 subdivisions of the brainstem?","Midbrain, Pons, Medulla oblongata","neuroanatomy|brainstem|foundation",1,draft
-"What is the function of the cerebellum?","Motor coordination, balance, posture, motor learning, cognitive functions","neuroanatomy|cerebellum|foundation",1,draft
-"What are the 3 peduncles of the cerebellum?","Superior cerebellar peduncle (output), Middle cerebellar peduncle (input from pons), Inferior cerebellar peduncle (input from spinal cord/brainstem)","neuroanatomy|cerebellum|foundation",1,draft
-"What structures make up the limbic system?","Hippocampus, Amygdala, Parahippocampal gyrus, Cingulate gyrus, Hypothalamus, Mammillary bodies, Fornix","neuroanatomy|limbic|foundation",1,draft
-"What is the pathway of the dorsal column-medial lemniscal (DCML) system?","Peripheral nerve → Dorsal root ganglion → Dorsal column (fasciculus gracilis/cuneatus) → Medulla → Decussate as internal arcuate fibers → Medial lemniscus → VPL nucleus of thalamus → Primary somatosensory cortex","neuroanatomy|pathways|foundation",1,draft
-"What is the pathway of the lateral spinothalamic tract?","Peripheral nerve → Dorsal root ganglion → Rexed laminae I-V (substance substantia gelatinosa) → Decussate at spinal cord level → Ascend as lateral spinothalamic tract → VPL of thalamus → Primary somatosensory cortex","neuroanatomy|pathways|foundation",1,draft
-"What are the 12 cranial nerves in order?","I Olfactory, II Optic, III Oculomotor, IV Trochlear, V Trigeminal, VI Abducens, VII Facial, VIII Vestibulocochlear, IX Glossopharyngeal, X Vagus, XI Accessory, XII Hypoglossal","cranial-nerves|foundation",1,draft
-"Which cranial nerve carries parasympathetic fibers to the pupil (constriction)?","III Oculomotor nerve (Edinger-Westphal nucleus)","cranial-nerves|foundation",1,draft
-"Which cranial nerves are involved in swallowing?","V (trigeminal - mastication), VII (facial - taste), IX (glossopharyngeal - sensation), X (vagus - motor)","cranial-nerves|foundation",1,draft
-"What is the resting membrane potential of a neuron?","-70 mV (range: -60 to -80 mV)","cellular|action-potential|foundation",1,draft
-"What ion channels are responsible for the rising phase of an action potential?","Voltage-gated sodium channels (NaV1.1-1.9)","cellular|action-potential|foundation",1,draft
-"What ion channels are responsible for the falling phase of an action potential?","Voltage-gated potassium channels (KV1.1-1.4, KV7.x)","cellular|action-potential|foundation",1,draft
-"What type of synapse is most common in the CNS?","Chemical synapse (asymmetric Gray Type I or symmetric Gray Type II)","cellular|synaptic-transmission|foundation",1,draft
-"What is the mechanism of neurotransmitter release?","Action potential → Ca2+ influx via voltage-gated Ca2+ channels → Vesicle fusion → NT release into synaptic cleft → Receptor binding → Postsynaptic potential","cellular|synaptic-transmission|foundation",1,draft
+
+"What separates the frontal from parietal lobe?","Central sulcus (Rolando)","neuroanatomy|gross-brain|foundation",1,draft
+"What separates the frontal from temporal lobe?","Lateral sulcus (Sylvian)","neuroanatomy|gross-brain|foundation",1,draft
+"Broca area is in which gyrus and lobe?","Inferior frontal gyrus, Frontal lobe (Brodmann 44, 45)","neuroanatomy|gross-brain|foundation",1,draft
+"Wernicke area is in which gyrus and lobe?","Superior temporal gyrus, Temporal lobe (Brodmann 22)","neuroanatomy|gross-brain|foundation",1,draft
+"What are the components of the basal ganglia?","Caudate nucleus, Putamen, Globus pallidus (internus/externus), Subthalamic nucleus, Substantia nigra (pars compacta + pars reticulata)","neuroanatomy|gross-brain|foundation",1,draft
+"Which layer of neocortex receives thalamic input?","Layer IV — Internal granular layer","neuroanatomy|gross-brain|foundation",1,draft
+"Which layer contains Betz cells (corticofugal output to spinal cord)?","Layer V — Internal pyramidal layer","neuroanatomy|gross-brain|foundation",1,draft
+"What is the primary function of the caudate nucleus?","Motor planning and procedural memory; degeneration causes Huntington disease","neuroanatomy|gross-brain|foundation",1,draft
+"STN lesion causes what movement disorder?","Hemiballismus — violent, flinging movements of contralateral limbs","neuroanatomy|gross-brain|foundation",1,draft
+"What are the 6 layers of the neocortex (superficial to deep)?","I Molecular, II External granular, III External pyramidal, IV Internal granular, V Internal pyramidal, VI Multiform","neuroanatomy|gross-brain|foundation",1,draft
+"What percentage of cortex is hidden within sulci?","Two-thirds (2/3) is within sulci; one-third exposed on gyri","neuroanatomy|gross-brain|foundation",1,draft
+"What is the blood supply of Broca and Wernicke areas?","Usually LEFT hemisphere: MCA (middle cerebral artery) territory","neuroanatomy|gross-brain|foundation",1,draft
+"Gerstmann syndrome localizes to which gyrus?","Angular gyrus of the dominant hemisphere (usually left) — Brodmann 39","neuroanatomy|gross-brain|foundation",1,draft
+"What separates the parietal from occipital lobe?","Parieto-occipital sulcus","neuroanatomy|gross-brain|foundation",1,draft
+"What is the precentral gyrus function?","Primary motor cortex (M1) — Brodmann area 4 — voluntary motor control","neuroanatomy|gross-brain|foundation",1,draft
+"What is the postcentral gyrus function?","Primary somatosensory cortex (S1) — Brodmann areas 3, 1, 2 — sensory input from body","neuroanatomy|gross-brain|foundation",1,draft
+"Direct pathway effect on movement?","Facilitates movement — cortex excites striatum → inhibits GPi → disinhibits thalamus → excites cortex","neuroanatomy|gross-brain|foundation",1,draft
+"Indirect pathway effect on movement?","Inhibits movement — cortex excites striatum → activates GPi → inhibits thalamus → inhibits cortex","neuroanatomy|gross-brain|foundation",1,draft
